@@ -1,2 +1,4 @@
 [0415/222222.032:ERROR:file_io.cc(89)] ReadExactly: expected 392, observed 0
 [0415/222222.035:ERROR:crash_report_database_win.cc(444)] failed to read records
+[0416/205009.500:ERROR:file_io.cc(89)] ReadExactly: expected 392, observed 0
+[0416/205009.503:ERROR:crash_report_database_win.cc(444)] failed to read records
