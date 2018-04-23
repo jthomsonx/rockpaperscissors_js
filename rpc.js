@@ -5,6 +5,9 @@ console.log("Hello");
 // Creating Global Variables for computerSelection and playerSelection.
 var computerSelection = 0;
 var playerSelection = 0;
+var counter = 0;
+var computerCount = 0;
+var playerCount = 0;
 //console.log(playerSelection);
 //console.log(computerSelection);
 
@@ -48,38 +51,56 @@ function playerChoice() {
 function playRound(playerSelection, computerSelection) {
 	computerSelection = computerPlay();
 	playerSelection = playerChoice();
+
 	if (computerSelection == playerSelection) {
-		return "Both players selected: " + playerSelection + ". This game is a tie!";
+		console.log("Both players selected: " + playerSelection + ". This game is a tie!");
 	} else if (computerSelection == "rock" && playerSelection == "paper") {
-		return "Player wins. Paper beats Rock!";
+		console.log("Player wins. Paper beats Rock!");
+		playerCount++;
+		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";		
 	} else if (computerSelection == "rock" && playerSelection == "scissors") {
-		return "Computer wins. Rock beats Scissors!";
+		console.log("Computer wins. Rock beats Scissors!");
+		computerCount++;
+		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
 	} else if (computerSelection == "paper" && playerSelection == "rock") {
-		return "Computer wins. Paper beats Rock!";
+		console.log("Computer wins. Paper beats Rock!");
+		computerCount++;
+		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
 	} else if (computerSelection == "paper" && playerSelection == "scissors") {
-		return "Player wins. Scissors beats Paper!";
+		console.log("Player wins. Scissors beats Paper!");
+		playerCount++;
+		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
 	} else if (computerSelection == "scissors" && playerSelection == "paper") {
-		return "Computer wins. Scissors beats Paper!";
+		console.log("Computer wins. Scissors beats Paper!");
+		computerCount++;
+		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
 	} else if (computerSelection == "scissors" && playerSelection == "rock") {
-		return "Player wins. Rock beats Scissors!";
-//	} else {
-//		return "Something went wrong. Please play again!"
+		console.log("Player wins. Rock beats Scissors!");
+		playerCount++;
+		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
 	};
-}
-//console.log(computerSelection);
-//console.log(playerSelection);
-console.log(playRound(playerSelection, computerSelection));
-//console.log(computerSelection);
-//console.log(playerSelection);
+};
+//console.log(playRound(playerSelection, computerSelection));
 
 // Function that plays a 5 round game that reports a winner or loser at the end.
-var counter = 0;
-var computerCount = 0;
-var playerCount = 0;
+
 function game() {
-/* idea is to play 5 rounds of the playRound function, but add a count to both the counter and the 
-winner at the end of each round.  When all 5 rounds are played, it announces the winner and game over.
-*/
-// do loop, while counter < 5
-// if else loop comparing computer v player and announcing the winner.	
-}
+	console.log("Ready to play?  Best of 5 wins!");
+	while (counter < 5) {
+		console.log("Round " + (counter+1) + ":");
+		round = playRound(playerSelection, computerSelection);
+		counter++;
+	};
+	console.log("Game Over: Player Count = " + playerCount + ". Computer Count = " + computerCount + ".");
+	if (playerCount == computerCount) {
+		return "The game is a draw!";
+	} else if (playerCount > computerCount) {
+		return "Player wins!";
+	} else {
+		return "Computer wins!";
+	};
+};
+//while (counter < 5) {
+console.log(game());
+//};
+//console.log(playerCount);
