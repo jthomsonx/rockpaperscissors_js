@@ -1,15 +1,11 @@
-console.log("Hello");
-
 // Command Line version of Rock, Paper, Scissors
 
-// Creating Global Variables for computerSelection and playerSelection.
+// Creating Global Variables.
 var computerSelection = 0;
 var playerSelection = 0;
 var counter = 0;
 var computerCount = 0;
 var playerCount = 0;
-//console.log(playerSelection);
-//console.log(computerSelection);
 
 // Function to create a random Computer Selection.
 function computerPlay() {
@@ -20,10 +16,8 @@ function computerPlay() {
 		return computerSelection = "paper";
 	} else {
 		return computerSelection = "scissors";
-	}
-}
-//console.log(computerPlay());
-//console.log(computerSelection);
+	};
+};
 
 // Function to create a Player Selection using a prompt.
 function playerChoice() {
@@ -43,48 +37,34 @@ function playerChoice() {
 			alert("Invalid Entry. Please try again!");
 		}
 	} while (i == false);
-}
-//console.log(playerChoice());
-//console.log(playerSelection);
+};
 
-
+// Function to play a single round game.
 function playRound(playerSelection, computerSelection) {
 	computerSelection = computerPlay();
 	playerSelection = playerChoice();
-
+	
 	if (computerSelection == playerSelection) {
-		console.log("Both players selected: " + playerSelection + ". This game is a tie!");
-	} else if (computerSelection == "rock" && playerSelection == "paper") {
-		console.log("Player wins. Paper beats Rock!");
+		console.log("Both players selected: " + playerSelection + ". This round is a tie!");
+	} else if (computerSelection == "rock" && playerSelection == "paper" || 
+		computerSelection == "paper" && playerSelection == "scissors" ||
+		computerSelection == "scissors" && playerSelection == "rock") {
+		console.log("Player wins. " + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + " beats " + 
+			(computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + "!");
 		playerCount++;
-		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";		
-	} else if (computerSelection == "rock" && playerSelection == "scissors") {
-		console.log("Computer wins. Rock beats Scissors!");
+	} else {
+		console.log("Computer wins. " + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + " beats " + 
+			(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + "!");
 		computerCount++;
-		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
-	} else if (computerSelection == "paper" && playerSelection == "rock") {
-		console.log("Computer wins. Paper beats Rock!");
-		computerCount++;
-		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
-	} else if (computerSelection == "paper" && playerSelection == "scissors") {
-		console.log("Player wins. Scissors beats Paper!");
-		playerCount++;
-		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
-	} else if (computerSelection == "scissors" && playerSelection == "paper") {
-		console.log("Computer wins. Scissors beats Paper!");
-		computerCount++;
-		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
-	} else if (computerSelection == "scissors" && playerSelection == "rock") {
-		console.log("Player wins. Rock beats Scissors!");
-		playerCount++;
-		return "Player Score: " + playerCount + ". Computer Score: " + computerCount + ".";	
 	};
 };
+
+// Test for a single round game.
 //console.log(playRound(playerSelection, computerSelection));
 
 // Function that plays a 5 round game that reports a winner or loser at the end.
-
 function game() {
+	console.log("Welcome to Rock, Paper, Scissors!");
 	console.log("Ready to play?  Best of 5 wins!");
 	while (counter < 5) {
 		console.log("Round " + (counter+1) + ":");
@@ -100,7 +80,6 @@ function game() {
 		return "Computer wins!";
 	};
 };
-//while (counter < 5) {
+
+// Plays the game in the console.
 console.log(game());
-//};
-//console.log(playerCount);
