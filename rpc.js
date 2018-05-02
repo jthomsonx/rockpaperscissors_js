@@ -25,7 +25,7 @@ function playerChoice() {
   buttons.forEach((button) => {
   	button.addEventListener('click', (e) => {
   		playerSelection = button.id;
-  		console.log(playRound(playerSelection, computerSelection));
+  		playRound(playerSelection, computerSelection);
   	})
   });
 };
