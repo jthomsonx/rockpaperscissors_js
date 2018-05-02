@@ -1,4 +1,62 @@
-// Command Line version of Rock, Paper, Scissors
+// Online version of Rock, Paper, Scissors
+
+// Creating Global Variables.
+var computerSelection = 0;
+var playerSelection = 0;
+var counter = 0;
+var computerCount = 0;
+var playerCount = 0;
+
+// Function to create a random Computer Selection.
+function computerPlay() {
+	var randomNumber = Math.random();
+	if (randomNumber < 0.33) {
+		return computerSelection = "Rock";
+	} else if (randomNumber > 0.66) {
+		return computerSelection = "Paper";
+	} else {
+		return computerSelection = "Scissors";
+	};
+};
+
+// Function to create Player Selection by clicking an HTML button.
+function playerChoice() {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) => {
+  	button.addEventListener('click', (e) => {
+  		playerSelection = button.id;
+  		console.log(playRound(playerSelection, computerSelection));
+  	})
+  });
+};
+
+// Function to play a single round game.
+function playRound(playerSelection, computerSelection) {
+	computerSelection = computerPlay();
+	const results = document.querySelector('#results');
+	const rounds = document.querySelector('#rounds');
+	const score = document.querySelector('#score');
+	if (computerSelection == playerSelection) {
+		results.textContent = "Both players selected: " + playerSelection + ". This round is a tie!";
+	} else if (computerSelection == "Rock" && playerSelection == "Paper" || 
+		computerSelection == "Paper" && playerSelection == "Scissors" ||
+		computerSelection == "Scissors" && playerSelection == "Rock") {
+		results.textContent = "Player wins. " + playerSelection + " beats " + computerSelection + "!";
+		playerCount++;
+	} else {
+		results.textContent = "Computer wins. " + computerSelection + " beats " + playerSelection + "!";
+		computerCount++;
+	};
+	counter++;
+	rounds.textContent = "Rounds Played: " + counter;
+	score.textContent = "Player: " + playerCount + ". Computer: " + computerCount + ".";
+};
+
+// Play a single round game.
+console.log(playerChoice());
+
+
+/* ORIGINAL CONSOLE CODE.
 
 // Creating Global Variables.
 var computerSelection = 0;
@@ -83,3 +141,4 @@ function game() {
 
 // Plays the game in the console.
 console.log(game());
+*/
